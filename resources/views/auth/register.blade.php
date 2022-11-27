@@ -1,0 +1,32 @@
+@extends('layouts.logout')
+
+@section('content')
+
+{!! Form::open(['url' => '/register', 'method' => 'post']) !!}
+
+<h2>新規ユーザー登録</h2>
+
+<p>UserName
+{{ Form::label('ユーザー名') }}
+{{ Form::text('username',null,['class' => 'input']) }}</p>
+
+<p>MailAddress
+{{ Form::label('メールアドレス') }}
+{{ Form::text('mail',null,['class' => 'input']) }}</p>
+
+<p>Password
+{{ Form::label('パスワード') }}
+{{ Form::text('password',null,['class' => 'input']) }}</p>
+
+<p>Password confirm
+{{ Form::label('パスワード確認') }}
+{{ Form::text('password-confirm',null,['class' => 'input']) }}</p>
+
+{{ Form::submit('REGISTER') }}
+
+<p><a href="/login">ログイン画面へ戻る</a></p>
+
+{!! Form::close() !!}
+
+
+@endsection
