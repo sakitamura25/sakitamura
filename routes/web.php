@@ -25,6 +25,7 @@ Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@validator');
 
 Route::get('/added', 'Auth\RegisterController@added');
 
