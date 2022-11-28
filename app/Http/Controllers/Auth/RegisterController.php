@@ -55,9 +55,11 @@ class RegisterController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('auth/added')
+            return redirect('auth/register')
                 ->withErrors($validator)
                 ->withInout();
+        } else {
+            return view('added');
         }
     }
 
