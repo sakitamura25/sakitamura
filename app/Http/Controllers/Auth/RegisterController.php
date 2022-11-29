@@ -49,18 +49,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
+            'username' => 'required|string|between:4,12',
+            'mail' => 'required|string|email|between:4,12|unique:users',
+            'password' => 'required|string|alpha_num|between:4,12|confirmed|unique:users',
+            'password-confirm' => 'required|string|alpha_num|between:4,12|same:password|unique:users'
         ]);
 
-        if ($validator->fails()) {
-            return redirect('auth/register')
-                ->withErrors($validator)
-                ->withInout();
-        } else {
-            return view('added');
-        }
     }
 
     /**
