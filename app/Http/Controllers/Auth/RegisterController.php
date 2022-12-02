@@ -53,9 +53,7 @@ class RegisterController extends Controller
             'mail' => 'required|string|email|between:4,12|unique:users',
             'password' => 'required|string|alpha_num|between:4,12|confirmed|unique:users',
             'password-confirm' => 'required|string|alpha_num|between:4,12|same:password|unique:users',
-        ]);
-
-        $this->validate($data);
+        ])->validate();
     }
 
     /**
@@ -81,6 +79,8 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
+
+            $this->validate($data);
 
             $this->create($data);
             return redirect('added');
