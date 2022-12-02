@@ -52,9 +52,10 @@ class RegisterController extends Controller
             'username' => 'required|string|between:4,12',
             'mail' => 'required|string|email|between:4,12|unique:users',
             'password' => 'required|string|alpha_num|between:4,12|confirmed|unique:users',
-            'password-confirm' => 'required|string|alpha_num|between:4,12|same:password|unique:users'
+            'password-confirm' => 'required|string|alpha_num|between:4,12|same:password|unique:users',
         ]);
 
+        $this->validate($data);
     }
 
     /**
