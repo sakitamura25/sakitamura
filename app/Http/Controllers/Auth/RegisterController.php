@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'username' => 'required|string|between:4,12',
             'mail' => 'required|string|email|between:4,12|unique:users',
             'password' => 'required|string|alpha_num|between:4,12|confirmed|unique:users',
-            'password-confirm' => 'required|string|alpha_num|between:4,12|same:password|unique:users',
+            'password-confirm' => 'required|string|alpha_num|between:4,12|same:password',
         ])->validate();
     }
 
@@ -80,7 +80,7 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
 
-            $this->validate($data);
+            $this->validator($data);
 
             $this->create($data);
             return redirect('added');
