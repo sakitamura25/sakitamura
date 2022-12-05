@@ -49,10 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|between:4,12',
-            'mail' => 'required|string|email|between:4,12|unique:users',
-            'password' => 'required|string|alpha_num|between:4,12|confirmed|unique:users',
-            'password-confirm' => 'required|string|alpha_num|between:4,12|same:password',
+            'username' => 'required|between:4,12',
+            'mail' => 'required|email|between:4,12|unique:users',
+            'password' => 'required|alpha_num|between:4,12|confirmed|unique:users',
+            'password-confirm' => 'required|alpha_num|between:4,12|same:password',
         ])->validate();
     }
 
