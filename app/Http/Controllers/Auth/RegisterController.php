@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -88,7 +89,10 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function added(){
-        return view('auth.added');
+    public function added($id){
+        $users = DB::table('users')
+            ->where('id', $id)
+            ->first();
+        return view('auth.added', ['users' => $users]);
     }
 }
