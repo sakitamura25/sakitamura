@@ -2,13 +2,13 @@
 
 @section('content')
 
-{!! Form::open() !!}
+{!! Form::open(['url' => '/login', 'method' => 'post']) !!}
 
 <p>DAWNSNSへようこそ</p>
 
-{{ Form::label('e-mail') }}
+{{ Form::label('MailAddress') }}
 {{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
+{{ Form::label('Password') }}
 {{ Form::password('password',['class' => 'input']) }}
 
 {{ Form::submit('ログイン') }}
