@@ -3,9 +3,9 @@
 @section('content')
 
 <div id="clear">
-@foreach($users as $user)
-<p> {{ $user->username }}さん、</p>
-@endforeach
+@if(session('username'))
+<p> {{ session('username') }}さん、</p>
+@endif
 <p>ようこそ！DAWNSNSへ！</p>
 <p>ユーザー登録が完了しました。</p>
 <p>さっそく、ログインをしてみましょう。</p>
