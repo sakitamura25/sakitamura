@@ -84,15 +84,15 @@ class RegisterController extends Controller
             $this->validator($data);
 
             $this->create($data);
+
+            $request->session()->flash('username', $data['username']);
+
             return redirect('added');
         }
         return view('auth.register');
     }
 
-    public function added($id){
-        $users = DB::table('users')
-            ->where('id', $id)
-            ->first();
-        return view('auth.added', ['users' => $users]);
+    public function added(Request $request) {
+        return view('auth.added');
     }
 }
