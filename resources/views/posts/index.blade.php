@@ -5,10 +5,15 @@
 
 {!! Form::open(['url' => 'post/create', 'method' => 'post']) !!}
 
-{!! Form::input('text', 'newPost', null, ['required', 'placeholder' => '何をつぶやこうか…？']) !!}
+{!! Form::input('text', 'newPost', null, ['required', 'max:150', 'placeholder' => '何をつぶやこうか…？']) !!}
 
 {!! Form::button('<img src="images/post.png" alt="送信">', ['class' => 'btn', 'type' => 'submit']) !!}
 
 {!! Form::close() !!}
+
+  @foreach($posts as $post)
+    {{ Auth::user()->username }}
+    {{ $posts->posts }}
+  @endforeach
 
 @endsection
