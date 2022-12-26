@@ -12,7 +12,7 @@
 {!! Form::close() !!}
 
   @foreach($posts as $post)
-    {{ Auth::user()->username }}
+    {{ $posts->user_id }}
     {{ $posts->posts }}
   @endforeach
 
