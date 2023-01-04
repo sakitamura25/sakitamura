@@ -16,7 +16,9 @@ class PostsController extends Controller
         $posts = DB::table('posts')
             ->select([
                 'users.username',
+                'posts.user_id',
                 'posts.posts',
+                'posts.id',
             ])
             ->join('users', function($join){
                 $join->on('posts.user_id', '=', 'users.id');
@@ -33,5 +35,13 @@ class PostsController extends Controller
         ]);
 
         return back();
+    }
+
+    public function delete($id){
+        $post = DB::table('posts')
+            ->where('id', $id)
+            ->delete();
+
+        return redirect('posts.index');
     }
 }
