@@ -12,8 +12,14 @@
 {!! Form::close() !!}
 
   @foreach($posts as $post)
-    {{ $posts->user_id }}
-    {{ $posts->posts }}
+  <tr>
+    <td>{{ $post->username }}</td>
+    <td>{{ $post->posts }}</td>
+
+    @if(Auth::user()->id == $post->user_id)
+    <td><a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash_h.png" alt="削除"></a></td>
+    @endif
+  </tr>
   @endforeach
 
 @endsection
