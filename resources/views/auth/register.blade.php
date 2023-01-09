@@ -16,11 +16,11 @@
 
 <p>Password
 {{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}</p>
+{{ Form::password('password',null,['class' => 'input']) }}</p>
 
 <p>Password confirm
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}</p>
+{{ Form::password('password-confirm',null,['class' => 'input']) }}</p>
 
 {{ Form::submit('REGISTER') }}
 
