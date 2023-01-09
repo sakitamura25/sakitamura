@@ -33,6 +33,7 @@ Route::get('/top','PostsController@index');
 Route::post('/top','PostController@index');
 
 Route::get('/profile','UsersController@profile');
+Route::post('/profile','UsersController@profileUpdate');
 
 Route::get('/search','UsersController@index');
 
@@ -43,4 +44,5 @@ Route::get('/logout','Auth\LoginController@logout');
 
 Route::post('post/create', 'PostsController@create');
 
+Route::post('/post/{id}/update', 'PostsController@update');
 Route::get('/post/{id}/delete', 'PostsController@delete');
