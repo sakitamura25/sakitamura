@@ -37,9 +37,9 @@ class PostsController extends Controller
         return back();
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request){
         $id = $request->input('id');
-        $up_post = $request->input('upPost');
+        $up_post = $request->input('upPosts');
         DB::table('posts')
             ->where('id', $id)
             ->update(['posts' => $up_post]);
