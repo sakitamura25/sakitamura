@@ -17,14 +17,17 @@
     <td>{{ $post->posts }}</td>
 
     @if(Auth::user()->id == $post->user_id)
-    <td><a href="/post/{{ $post->id }}/update" data-target="modal"><img src="images/edit.png" alt="編集"></a></td>
+    <td><a href="" data-target="modal"><img src="images/edit.png" alt="編集"></a></td>
 
     <!-- モーダル画面 -->
-    <div id="modal">
-      {!! Form::open(['url' => '', 'method' => 'post']) !!}
-      <img src="images/edit.png" alt="編集">
+        <div id="modal">
+      {!! Form::open(['url' => '/post/update', 'method' => 'post']) !!}
+      {!! Form::hidden('id', $post->id) !!}
+      {!! Form::input('text', 'upPosts', $post->posts, ['required', 'max:200']) !!}
+      <button type="submit"><img src="images/edit.png" alt="編集"></button>
       {!! Form::close() !!}
     </div>
+
 
     <td><a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash_h.png" alt="削除"></a></td>
     @endif
