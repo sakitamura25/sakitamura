@@ -4,24 +4,30 @@
 
 {!! Form::open(['url' => '/profile', 'method' => 'post']) !!}
 
-{!! Form::hidden('id, $user->id') !!}
+{!! Form::hidden('id', $user->id) !!}
 
+<p>
 {!! Form::label('UserName') !!}
-{!! Form::input('text', 'upUserName', $user->username, ['required']) !!}
+{!! Form::input('text', 'upUserName', $user->username, ['required']) !!}</p>
 
+<p>
 {!! Form::label('MailAddress') !!}
-{!! Form::input('mail', 'upMail', $user->mail, ['required']) !!}
+{!! Form::input('mail', 'upMail', $user->mail, ['required']) !!}</p>
 
+<p>
 {!! Form::label('Password') !!}
-{!! Form::input('password', '', $user->password, ['readonly']) !!}
+{!! Form::input('password', '', $user->password, ['readonly']) !!}</p>
 
+<p>
 {!! Form::label('new Password') !!}
-{!! Form::password('newPassword') !!}
+{!! Form::password('newPassword') !!}</p>
 
+<p>
 {!! Form::label('Bio') !!}
-{!! Form::input('text', 'bio', $user->bio) !!}
+{!! Form::input('text', 'bio', $user->bio) !!}</p>
 
-{!! Form::label('Icon Image') !!}
+<p>
+{!! Form::label('Icon Image') !!}</p>
 
 <button type="submit">更新</button>
 {!! Form::close() !!}
