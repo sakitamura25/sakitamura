@@ -13,18 +13,25 @@ use Illuminate\Support\Facades\Validator;
 class PostsController extends Controller
 {
     public function index(){
-        $post = DB::table('posts')
+
+        $posts = DB::table('posts')
             ->select([
+                'users.id',
                 'users.username',
+                'users.images',
+                'posts.id',
                 'posts.user_id',
                 'posts.posts',
-                'posts.id',
+                'follows.follow',
+                'follows.follower',
             ])
-            ->join('users', function($join){
-                $join->on('posts.user_id', '=', 'users.id');
-            })
+            ->join('follows', 'posts.user_id', '=', 'follows.follow')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->where('follows.follower', Auth::id())
+            ->orWhere('posts.user_id', Auth::id())
             ->get();
-        return view('posts.index', ['posts' => $post]);
+
+            return view('posts.index', compact('posts'));
     }
 
     public function create(Request $request){
