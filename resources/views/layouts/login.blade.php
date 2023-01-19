@@ -25,7 +25,8 @@
         <h1><a  href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>{{ Auth::user()->username }}さん<img src="images/dawn.png"></p>
+                    <p>{{ Auth::user()->username }}さん
+                        <img src="{{ asset('images/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}"></p>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>
@@ -44,12 +45,26 @@
                 <p>{{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+
+                @php
+                    $follow_count = DB::table('follows')
+                        ->where('follower', Auth::id())
+                         ->count();
+                @endphp
+
+                <p>{{ $follow_count }}名</p>
                 </div>
                 <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+
+                @php
+                    $follower_count = DB::table('follows')
+                       ->where('follow', Auth::id())
+                         ->count();
+                @endphp
+
+                <p>{{ $follower_count }}名</p>
                 </div>
                 <p class="btn"><a href="follower-list">フォロワーリスト</a></p>
             </div>
