@@ -3,18 +3,19 @@
 @section('content')
 <!-- <h2>機能を実装していきましょう。</h2> -->
 
-{!! Form::open(['url' => 'post/create', 'method' => 'post']) !!}
+{{ Form::open(['url' => 'post/create', 'method' => 'post']) }}
 
-{!! Form::input('text', 'newPost', null, ['required', 'max:150', 'placeholder' => '何をつぶやこうか…？']) !!}
+{{ Form::input('text', 'newPost', null, ['required', 'max:150', 'placeholder' => '何をつぶやこうか…？']) }}
 
-{!! Form::button('<img src="images/post.png" alt="送信">', ['class' => 'btn', 'type' => 'submit']) !!}
+{{ Form::button('<img src="images/post.png" alt="送信">', ['class' => 'btn', 'type' => 'submit']) }}
 
-{!! Form::close() !!}
+{{ Form::close() }}
 
   @foreach($posts as $post)
   <tr>
+    <img src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
     <td>{{ $post->username }}</td>
-    <td>{{ $post->posts }}</td>
+    <td>{{ $post->posts }}</td><br>
 
     @if(Auth::user()->id == $post->user_id)
     <td><a href="" data-target="modal"><img src="images/edit.png" alt="編集"></a></td>

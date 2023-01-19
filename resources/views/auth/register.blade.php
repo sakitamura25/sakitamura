@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => '/register', 'method' => 'post']) !!}
+{{ Form::open(['url' => '/register', 'method' => 'post']) }}
 
 <h2>新規ユーザー登録</h2>
 
@@ -26,7 +26,7 @@
 
 <p><a href="/login">ログイン画面へ戻る</a></p>
 
-{!! Form::close() !!}
+{{ Form::close() }}
 
 @if ($errors->any())
 	    <div class="alert alert-danger">
