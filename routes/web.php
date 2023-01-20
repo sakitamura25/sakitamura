@@ -32,15 +32,15 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::get('/top','PostsController@index');
 Route::post('/top','PostController@search');
 
-Route::get('/profile','UsersController@profile');
-Route::post('/profile','UsersController@profileUpdate');
+Route::get('/profile','PostsController@profile');
+Route::post('/profile','PostsController@profileUpdate');
 
 Route::get('/search','UsersController@index');
 Route::post('/search','UsersController@index');
 
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','FollowsController@followList');
+Route::get('/follower-list','FollowsController@followerList');
 
 Route::get('/logout','Auth\LoginController@logout');
 
@@ -51,3 +51,5 @@ Route::get('/post/{id}/delete', 'PostsController@delete');
 
 Route::post('/follow', 'FollowsController@follow');
 Route::post('/unfollow', 'FollowsController@unfollow');
+
+Route::get('/users_profile', 'UsersController@profile');
