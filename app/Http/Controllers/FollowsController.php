@@ -9,12 +9,34 @@ use DB;
 class FollowsController extends Controller
 {
 
-    //
     public function followList(){
-        return view('follows.followList');
+        $follow_lists = DB::table('follows')
+            ->select([
+                'follows.follow',
+                'follows.follower',
+                'users.id',
+                'users.images',
+            ])
+            ->join('users', 'follows.follow', '=', 'users.id')
+            ->where('follower', Auth::id())
+            ->get();
+
+        return view('follows.followList', compact('follow_lists'));
     }
+
     public function followerList(){
-        return view('follows.followerList');
+        $follower_lists = DB::table('follows')
+            ->select([
+                'follows.follow',
+                'follows.follower',
+                'users.id',
+                'users.images',
+            ])
+            ->join('users', 'follows.follower', '=', 'users.id')
+            ->where('follow', Auth::id())
+            ->get();
+
+        return view('follows.followerList', compact('follower_lists'));
     }
 
     public function follow(Request $request){
