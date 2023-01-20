@@ -64,7 +64,7 @@ class PostsController extends Controller
 
     public function profile(){
         $user = Auth::user();
-        return view('users.profile', ['user' => $user]);
+        return view('posts.profile', ['user' => $user]);
     }
 
     public function profileUpdate(Request $request){
@@ -92,7 +92,7 @@ class PostsController extends Controller
         // $user->images = $request->file('images')->store('public/images');
         $user->save();
 
-        return view('users.profile');
+        return view('posts.profile');
         }
 
     }
