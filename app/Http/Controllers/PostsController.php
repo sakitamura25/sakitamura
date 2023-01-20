@@ -61,4 +61,39 @@ class PostsController extends Controller
 
         return redirect('/top');
     }
+
+    public function profile(){
+        $user = Auth::user();
+        return view('users.profile', ['user' => $user]);
+    }
+
+    public function profileUpdate(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|between:4,12',
+            // 'mail' => 'required|email|between:4,12|unique:users',
+            // 'password' => 'required|alpha_num|between:4,12|unique:users',
+            'bio' => 'max:200',
+        ]);
+
+        if ($validator->fails()) {
+
+            return redirect('/profile');
+                // ->withError($validator)
+                // ->withInput();
+
+        } else {
+
+        $user = Auth::user();
+        $user->username = $request->input('upUserName');
+        $user->mail = $request->input('upMail');
+        $user->password = bcrypt($request->input('newPassword'));
+        $user->bio = $request->input('bio');
+        // $user->images = $request->file('images')->store('public/images');
+        $user->save();
+
+        return view('users.profile');
+        }
+
+    }
 }
