@@ -2,35 +2,28 @@
 
 @section('content')
 
-{{ Form::open(['url' => '/profile', 'method' => 'post']) }}
+    <img src="{{ asset('images/' . $users->images) }}", alt="{{ $users->images }}">
+    {{ $users->username }}
+    {{ $users->bio }}
 
-{{ Form::hidden('id', $user->id) }}
+      @if($follows->contains($users->id))
+        {{ Form::open(['url' => '/unfollow', 'method' => 'post']) }}
+        {{ Form::hidden('id', $users->id) }}
+        {{ Form::button('フォローをはずす', ['class' => 'btn', 'type' => 'submit']) }}
+        {{ Form::close() }}
+      @else
+        {{ Form::open(['url' => '/follow', 'method' => 'post']) }}
+        {{ Form::hidden('id', $users->id) }}
+        {{ Form::button('フォローする', ['class' => 'btn', 'type' => 'submit']) }}
+        {{ Form::close() }}
+      @endif
 
-<p>
-{{ Form::label('UserName') }}
-{{ Form::input('text', 'upUserName', $user->username, ['required']) }}</p>
 
-<p>
-{{ Form::label('MailAddress') }}
-{{ Form::input('mail', 'upMail', $user->mail, ['required']) }}</p>
+    @foreach($posts as $post)
+      <img src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+      {{ $post->username }}
+      {{ $post->posts }}
 
-<p>
-{{ Form::label('Password') }}
-{{ Form::input('password', '', $user->password, ['readonly']) }}</p>
-
-<p>
-{{ Form::label('new Password') }}
-{{ Form::password('newPassword') }}</p>
-
-<p>
-{{ Form::label('Bio') }}
-{{ Form::input('text', 'bio', $user->bio) }}</p>
-
-<p>
-{{ Form::label('Icon Image') }}
-{{ Form::file('images') }}</p>
-
-<button type="submit">更新</button>
-{{ Form::close() }}
+    @endforeach
 
 @endsection
