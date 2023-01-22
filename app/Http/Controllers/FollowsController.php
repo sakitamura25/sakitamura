@@ -48,7 +48,7 @@ class FollowsController extends Controller
             'follow' => $follow,
         ]);
 
-        return redirect('/search');
+        return back();
     }
 
     public function unfollow(Request $request){
@@ -60,7 +60,7 @@ class FollowsController extends Controller
             ->where('follow', $follow)
             ->delete();
 
-        return redirect('/search');
+        return back();
     }
 
 }
