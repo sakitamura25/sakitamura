@@ -33,10 +33,29 @@ class UsersController extends Controller
         return view('users.search', compact('keyword', 'users', 'follows'));
     }
 
-    public function profile(){
-        $users = DB::table('users')->get();
+    public function profile($user_id){
+        $users = DB::table('users')
+            ->where('id', $user_id)
+            ->first();
 
-        return view('', compact('users'));
+        $follows = DB::table('follows')
+            ->where('follower', Auth::id())
+            ->pluck('follow');
+
+        $posts = DB::table('posts')
+            ->select([
+                'posts.id',
+                'posts.user_id',
+                'posts.posts',
+                'users.id',
+                'users.username',
+                'users.images',
+            ])
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->where('user_id', $user_id)
+            ->get();
+
+        return view('users.profile', compact('users', 'follows', 'posts'));
     }
 
 }
