@@ -13,7 +13,11 @@
 
   @foreach($posts as $post)
   <tr>
-    <img src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+    @if(Auth::user()->id != $post->user_id)
+       <a href="/users/{{ $post->user_id }}/profile"><img src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}"></a>
+    @elseif(Auth::user()->id == $post->user_id)
+      <img src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+    @endif
     <td>{{ $post->username }}</td>
     <td>{{ $post->posts }}</td><br>
 
