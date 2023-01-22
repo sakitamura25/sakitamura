@@ -52,4 +52,4 @@ Route::get('/post/{id}/delete', 'PostsController@delete');
 Route::post('/follow', 'FollowsController@follow');
 Route::post('/unfollow', 'FollowsController@unfollow');
 
-Route::get('/users_profile', 'UsersController@profile');
+Route::get('/users/{user_id}/profile', 'UsersController@profile');
