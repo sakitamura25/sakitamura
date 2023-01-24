@@ -2,41 +2,49 @@
 
 @section('content')
 
-{{ Form::open(['url' => '/register', 'method' => 'post']) }}
+<div class="register">
+	{{ Form::open(['url' => '/register', 'method' => 'post']) }}
 
-<h2>新規ユーザー登録</h2>
+	<div class="form">
+		<h2 class="top-copy">新規ユーザー登録</h2>
 
-<p>UserName
-{{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}</p>
+		<div class="register-block">
+			{{ Form::label('username', 'UserName', ['class' => 'register-text']) }}
+			{{ Form::text('username',null,['class' => 'register-form']) }}
+		</div>
 
-<p>MailAddress
-{{ Form::label('メールアドレス') }}
-{{ Form::text('mail',null,['class' => 'input']) }}</p>
+		<div class="register-block">
+			{{ Form::label('mail', 'MailAddress', ['class' => 'register-text']) }}
+			{{ Form::text('mail',null,['class' => 'register-form']) }}
+		</div>
 
-<p>Password
-{{ Form::label('パスワード') }}
-{{ Form::password('password',null,['class' => 'input']) }}</p>
+		<div class="register-block">
+			{{ Form::label('password', 'Password', ['class' => 'register-text']) }}
+			{{ Form::password('password',['class' => 'register-form']) }}
+		</div>
 
-<p>Password confirm
-{{ Form::label('パスワード確認') }}
-{{ Form::password('password-confirm',null,['class' => 'input']) }}</p>
+		<div class="register-block">
+			{{ Form::label('password-confirm', 'PasswordConfirm', ['class' => 'register-text']) }}
+			{{ Form::password('password-confirm',['class' => 'register-form']) }}
+		</div>
 
-{{ Form::submit('REGISTER') }}
+			{{ Form::submit('REGISTER', ['class' => 'register-button']) }}
+	</div>
 
-<p><a href="/login">ログイン画面へ戻る</a></p>
+		<p class="t-l-c"><a href="/login" class="to-login-copy">ログイン画面へ戻る</a></p>
 
-{{ Form::close() }}
+		{{ Form::close() }}
 
-@if ($errors->any())
-	    <div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
+		@if ($errors->any())
+					<div class="alert alert-danger">
+							<ul>
+									@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+									@endforeach
+							</ul>
+					</div>
+			@endif
 
+</div>
 
 @endsection
