@@ -26,8 +26,9 @@ body {
     height: auto;
 }
 
-.login,
-.register {
+#login,
+#register,
+#clear {
     max-width: 300px;
     margin: 0 auto;
     background-color: #141414;
@@ -80,14 +81,14 @@ h2 {
     transition: 0.6s;
 }
 
-.login-button:hover {
+.login-button:hover,
+.register-button:hover {
     background-color: #fff;
     color: #32529b;
     transition: 0.6s;
 }
 
-.r-c,
-.t-l-c {
+.btn {
     padding-bottom: 40px;
 }
 
@@ -98,4 +99,42 @@ h2 {
     font-size: 14px;
     color: #fff;
     margin-top: 40px;
+}
+
+.added-copy {
+    color: #fff;
+    padding-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.added-text {
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.to-login-btn {
+    display: inline-block;
+    margin-top: 40px;
+    border: 0;
+    background-color: #32529b;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    transition: 0.6s;
+}
+
+.added-btn {
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.to-login-btn:hover {
+    background-color: #fff;
+    color: #32529b;
+    transition: 0.6s;
 }
