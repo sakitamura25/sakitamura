@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="login">
+<div id="login">
   {!! Form::open(['url' => '/login', 'method' => 'post']) !!}
 
   <div class="form">
@@ -18,7 +18,7 @@
       {{ Form::submit('LOGIN', ['class' => 'login-button'])}}
   </div>
 
-  <p class="r-c"><a href="/register" class="register-copy">新規ユーザーの方はこちら</a></p>
+  <p class="btn"><a href="/register" class="register-copy">新規ユーザーの方はこちら</a></p>
 
   {!! Form::close() !!}
 </div>
