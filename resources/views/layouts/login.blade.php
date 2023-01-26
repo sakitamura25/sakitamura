@@ -46,31 +46,27 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>{{ Auth::user()->username }}さんの</p>
-                <div>
-                <p>フォロー数</p>
-
-                @php
-                    $follow_count = DB::table('follows')
-                        ->where('follower', Auth::id())
-                         ->count();
-                @endphp
-
-                <p>{{ $follow_count }}名</p>
-                </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数</p>
-
-                @php
-                    $follower_count = DB::table('follows')
-                       ->where('follow', Auth::id())
-                         ->count();
-                @endphp
-
-                <p>{{ $follower_count }}名</p>
-                </div>
-                <p class="btn"><a href="follower-list">フォロワーリスト</a></p>
+                <p class="sb-name">{{ Auth::user()->username }}さんの</p>
+                    <div class="sb-block">
+                        <p class="sb-name">フォロー数</p>
+                        @php
+                            $follow_count = DB::table('follows')
+                                ->where('follower', Auth::id())
+                                ->count();
+                        @endphp
+                        <p class="sb-count">{{ $follow_count }}名</p>
+                    </div>
+                    <p class="sb-btn"><a href="/follow-list" class="list-button">フォローリスト</a></p>
+                    <div class="sb-block">
+                        <p class="sb-name">フォロワー数</p>
+                        @php
+                            $follower_count = DB::table('follows')
+                            ->where('follow', Auth::id())
+                                ->count();
+                        @endphp
+                        <p class="sb-count">{{ $follower_count }}名</p>
+                    </div>
+                    <p class="sb-btn"><a href="follower-list" class="list-button">フォロワーリスト</a></p>
             </div>
             <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
