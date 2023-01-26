@@ -42,3 +42,42 @@ header {
 .title {
     text-align: center;
 }
+
+.sb-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sb-name {
+    font-size: 14px;
+    margin: 10px 10px 0 10px;
+}
+
+.sb-count {
+    font-size: 14px;
+    margin: 10px 10px 0 10px;
+}
+
+.sb-btn {
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list-button {
+    display: inline-block;
+    border: 0;
+    padding: 10px 15px;
+    background-color: #3C4767;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff;
+    transition: 0.6s;
+}
+
+.list-button:hover {
+    background-color: #fff;
+    color: #3C4767;
+    transition: 0.6s;
+}
