@@ -3,7 +3,7 @@
 @section('content')
 
   @foreach($follow_lists as $follow_list)
-    <img src="{{ asset('images/' . $follow_list->images) }}" alt="{{$follow_list->images }}">
+    <a href="/users/{{ $follow_list->id }}/profile"><img src="{{ asset('images/' . $follow_list->images) }}", alt="{{ $follow_list->images }}"></a>
   @endforeach
 
 @endsection
