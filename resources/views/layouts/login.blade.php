@@ -68,7 +68,7 @@
                     </div>
                     <p class="sb-btn"><a href="follower-list" class="list-button">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+            <p class="sb-btn search"><a href="/search" class="list-button">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
