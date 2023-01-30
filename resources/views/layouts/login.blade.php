@@ -26,16 +26,18 @@
                 <h1><a  href="/top" class="logo"><img src="{{ asset('images/main_logo.png') }}"></a></h1>
                 <div id="right">
                     <div id="login-user">
-                        <p>{{ Auth::user()->username }}さん</p>
-                        <img src="{{ asset('images/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
+                        <p class="username">{{ Auth::user()->username }}さん</p>
+                        <div class="arrow"></div>
+                            <div class="nav-wrapper">
+                                <ul class="menu">
+                                    <li><a href="/top">ホーム</a></li>
+                                    <li><a href="/profile">プロフィール</a></li>
+                                    <li><a href="/logout">ログアウト</a></li>
+                                </ul>
+                            </div>
+                        <img class="icon" src="{{ asset('images/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
                     <div>
-                    <div class="nav-wrapper">
-                        <ul>
-                            <li><a href="/top">ホーム</a></li>
-                            <li><a href="/profile">プロフィール</a></li>
-                            <li><a href="/logout">ログアウト</a></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -73,7 +75,7 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

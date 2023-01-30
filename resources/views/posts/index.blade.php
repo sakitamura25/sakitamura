@@ -2,30 +2,33 @@
 
 @section('content')
 <!-- <h2>機能を実装していきましょう。</h2> -->
+  {{ Form::open(['url' => 'post/create', 'method' => 'post']) }}
+<div id="post">
+  <img class="form-icon icon" src="{{ asset('images/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
+  {{ Form::input('text', 'newPost', null, ['required', 'max:150', 'placeholder' => '何をつぶやこうか…？', 'class' => 'post-text']) }}
 
-{{ Form::open(['url' => 'post/create', 'method' => 'post']) }}
+  {{ Form::button('<img src="images/post.png" alt="送信">', ['class' => 'send-btn', 'type' => 'submit']) }}
 
-{{ Form::input('text', 'newPost', null, ['required', 'max:150', 'placeholder' => '何をつぶやこうか…？']) }}
+  {{ Form::close() }}
+</div>
 
-{{ Form::button('<img src="images/post.png" alt="送信">', ['class' => 'btn', 'type' => 'submit']) }}
-
-{{ Form::close() }}
-
-  @foreach($posts as $post)
-  <tr>
+@foreach($posts as $post)
+<div id="posts">
     @if(Auth::user()->id != $post->user_id)
-       <a href="/users/{{ $post->user_id }}/profile"><img src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}"></a>
+      <a href="/users/{{ $post->user_id }}/profile">
+        <img class="post-icon icon" src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+      </a>
     @elseif(Auth::user()->id == $post->user_id)
-      <img src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+      <img  class="post-icon icon" src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
     @endif
-    <td>{{ $post->username }}</td>
-    <td>{{ $post->posts }}</td><br>
+      <div>{{ $post->username }}</div>
+      <div>{{ $post->posts }}</div>
 
     @if(Auth::user()->id == $post->user_id)
     <td><a href="" data-target="modal"><img src="images/edit.png" alt="編集"></a></td>
 
     <!-- モーダル画面 -->
-        <div id="modal">
+    <div id="modal">
       {!! Form::open(['url' => '/post/update', 'method' => 'post']) !!}
       {!! Form::hidden('id', $post->id) !!}
       {!! Form::input('text', 'upPosts', $post->posts, ['required', 'max:200']) !!}
@@ -36,7 +39,8 @@
 
     <td><a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash_h.png" alt="削除"></a></td>
     @endif
-  </tr>
-  @endforeach
+</div>
+ @endforeach
+
 
 @endsection

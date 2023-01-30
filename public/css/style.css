@@ -13,6 +13,7 @@ header {
 .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
@@ -22,6 +23,43 @@ header {
 #login-user {
     display: flex;
     align-items: center;
+}
+
+.username {
+    color: #fff;
+}
+
+.arrow {
+    width: 14px;
+    height: 14px;
+    border: 2px solid;
+    border-color: transparent #fff #fff transparent;
+    transform: rotate(45deg);
+    margin: 20px;
+}
+
+/* .nav-wrapper {
+    display: none;
+} */
+
+.menu li {
+    background-color: #fff;
+    border: 1px solid #6C6C6C;
+}
+
+.menu li a {
+    display: block;
+    color: #6C6C6C;
+}
+
+.menu li a:hover {
+    background-color: #ff6927;
+    color: #fff;
+}
+
+.icon {
+    border-radius: 50%;
+    margin-right: 20px;
 }
 
 /* main content */
@@ -93,3 +131,31 @@ header {
     justify-content: center;
     margin-top: 30px;
 }
+
+#post {
+    border-bottom: 3px solid #969494;
+    display: flex;
+}
+
+.form-icon {
+    margin: 30px 20px;
+}
+
+.post-text {
+    border: none;
+    width: 80%;
+    padding: 10px;
+}
+
+.send-btn {
+    border: none;
+    background: transparent;
+    margin-right: 20px;
+}
+
+#posts {
+    border-bottom: 1px solid #969494;
+    display: flex;
+}
+
+.post-icon {}
