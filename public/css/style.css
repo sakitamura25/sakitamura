@@ -20,36 +20,61 @@ header {
     margin-left: 20px;
 }
 
-#login-user {
+#accordion {
     display: flex;
     align-items: center;
 }
 
-.username {
+.accordion-username {
+    display: flex;
+    position: relative;
+    padding: 30px 70px 30px 0;
     color: #fff;
+    cursor: pointer;
 }
 
-.arrow {
+.accordion-username::after {
+    content: "";
+    position: absolute;
+    right: 30px;
+    top: 38%;
+    display: block;
     width: 14px;
     height: 14px;
-    border: 2px solid;
-    border-color: transparent #fff #fff transparent;
-    transform: rotate(45deg);
-    margin: 20px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
 }
 
-/* .nav-wrapper {
+.accordion-username.open::after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.menu {
     display: none;
-} */
+    position: absolute;
+    top: 102px;
+    right: 0;
+    z-index: 1000;
+}
 
 .menu li {
     background-color: #fff;
     border: 1px solid #6C6C6C;
+    border-top: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 60px;
+    line-height: 60px;
+
 }
 
 .menu li a {
     display: block;
     color: #6C6C6C;
+    text-align: center;
 }
 
 .menu li a:hover {

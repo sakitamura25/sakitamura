@@ -25,23 +25,23 @@
             <div class="header">
                 <h1><a  href="/top" class="logo"><img src="{{ asset('images/main_logo.png') }}"></a></h1>
                 <div id="right">
-                    <div id="login-user">
-                        <p class="username">{{ Auth::user()->username }}さん</p>
-                        <div class="arrow"></div>
-                            <div class="nav-wrapper">
-                                <ul class="menu">
-                                    <li><a href="/top">ホーム</a></li>
-                                    <li><a href="/profile">プロフィール</a></li>
-                                    <li><a href="/logout">ログアウト</a></li>
-                                </ul>
-                            </div>
+                    <div id="accordion">
+                        <p class="accordion-username">{{ Auth::user()->username }}さん</p>
                         <img class="icon" src="{{ asset('images/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
                     <div>
-
                 </div>
             </div>
         </div>
     </header>
+
+     <nav class="g-navi">
+        <ul class="menu">
+            <li><a href="/top">ホーム</a></li>
+            <li><a href="/profile">プロフィール</a></li>
+            <li><a href="/logout">ログアウト</a></li>
+        </ul>
+    </nav>
+
     <div id="row">
         <div id="container">
             @yield('content')
