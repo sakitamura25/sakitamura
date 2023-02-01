@@ -178,9 +178,62 @@ header {
     margin-right: 20px;
 }
 
-#posts {
+#post-container {
     border-bottom: 1px solid #969494;
+    display: block;
+    padding: 20px;
+    padding-left: 40px;
+    position: relative;
+}
+
+.user-block {
     display: flex;
 }
 
-.post-icon {}
+.user-block-icon {
+    flex-basis: 100px;
+    border-radius: 50%;
+}
+
+.user-block-username {
+    padding-top: 15px;
+}
+
+.post-block {
+    margin-left: 75px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.btn-block {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-open {
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#modal-container {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+
+#modal-container.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-body {}
+
+.modal-btn {
+    cursor: pointer;
+}

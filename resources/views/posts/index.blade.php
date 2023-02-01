@@ -13,32 +13,38 @@
 </div>
 
 @foreach($posts as $post)
-<div id="posts">
+<div id="post-container">
+  <div class="user-block">
     @if(Auth::user()->id != $post->user_id)
       <a href="/users/{{ $post->user_id }}/profile">
-        <img class="post-icon icon" src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+        <img class="user-block-icon icon" src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
       </a>
     @elseif(Auth::user()->id == $post->user_id)
-      <img  class="post-icon icon" src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+      <p>
+        <img class="user-block-icon icon" src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+      </p>
     @endif
-      <div>{{ $post->username }}</div>
-      <div>{{ $post->posts }}</div>
-
+      <p class="user-block-username">{{ $post->username }}</p>
+  </div>
+  <div class="post-block">
+      <p>{{ $post->posts }}</p>
+  </div>
+  <div class="btn-block">
     @if(Auth::user()->id == $post->user_id)
-    <td><a href="" data-target="modal"><img src="images/edit.png" alt="編集"></a></td>
-
+    <a href="" class="modal-open"><img src="images/edit.png" alt="編集"></a>
     <!-- モーダル画面 -->
-    <div id="modal">
-      {!! Form::open(['url' => '/post/update', 'method' => 'post']) !!}
-      {!! Form::hidden('id', $post->id) !!}
-      {!! Form::input('text', 'upPosts', $post->posts, ['required', 'max:200']) !!}
-      <button type="submit"><img src="images/edit.png" alt="編集"></button>
-      {!! Form::close() !!}
-    </div>
-
-
+      <div id="modal-container">
+        <div class="modal-body">
+          {{ Form::open(['url' => '/post/update', 'method' => 'post']) }}
+          {{ Form::hidden('id', $post->id) }}
+          {{ Form::input('text', 'upPosts', $post->posts, ['required', 'max:200']) }}
+          {{ Form::button('<img src="images/edit.png" alt="編集">', ['class' => 'modal-btn', 'type' => 'submit']) }}
+          {{ Form::close() }}
+        </div>
+      </div>
     <td><a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash_h.png" alt="削除"></a></td>
     @endif
+  </div>
 </div>
  @endforeach
 
