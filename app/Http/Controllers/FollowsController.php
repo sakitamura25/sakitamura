@@ -21,7 +21,27 @@ class FollowsController extends Controller
             ->where('follower', Auth::id())
             ->get();
 
-        return view('follows.followList', compact('follow_lists'));
+        $follow_posts = DB::table('posts')
+            ->select([
+                'users.id',
+                'users.username',
+                'users.images',
+                'posts.id',
+                'posts.user_id',
+                'posts.posts',
+                'posts.created_at',
+                'posts.updated_at',
+                'follows.follow',
+                'follows.follower',
+            ])
+            ->join('follows', 'posts.user_id', '=', 'follows.follow')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->where('follows.follower', Auth::id())
+            ->orWhere('posts.user_id', Auth::id())
+            ->orderBy('posts.updated_at', 'desc')
+            ->get();
+
+        return view('follows.followList', compact('follow_lists', 'follow_posts'));
     }
 
     public function followerList(){
@@ -36,7 +56,27 @@ class FollowsController extends Controller
             ->where('follow', Auth::id())
             ->get();
 
-        return view('follows.followerList', compact('follower_lists'));
+        $follower_posts = DB::table('posts')
+            ->select([
+                'users.id',
+                'users.username',
+                'users.images',
+                'posts.id',
+                'posts.user_id',
+                'posts.posts',
+                'posts.created_at',
+                'posts.updated_at',
+                'follows.follow',
+                'follows.follower',
+            ])
+            ->join('follows', 'posts.user_id', '=', 'follows.follower')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->where('follows.follow', Auth::id())
+            ->orWhere('posts.user_id', Auth::id())
+            ->orderBy('posts.updated_at', 'desc')
+            ->get();
+
+        return view('follows.followerList', compact('follower_lists', 'follower_posts'));
     }
 
     public function follow(Request $request){
