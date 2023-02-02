@@ -25,6 +25,7 @@
       </p>
     @endif
       <p class="user-block-username">{{ $post->username }}</p>
+      <p class="user-block-time">{{ $post->updated_at }}</p>
   </div>
   <div class="post-block">
       <p>{{ $post->posts }}</p>
