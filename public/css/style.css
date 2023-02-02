@@ -160,6 +160,7 @@ header {
 #post {
     border-bottom: 3px solid #969494;
     display: flex;
+    background-color: #fff;
 }
 
 .form-icon {
@@ -197,6 +198,13 @@ header {
 
 .user-block-username {
     padding-top: 15px;
+    flex-grow: 4;
+    font-size: 14px;
+}
+
+.user-block-time {
+    padding-top: 15px;
+    font-size: 14px;
 }
 
 .post-block {
@@ -236,4 +244,19 @@ header {
 
 .modal-btn {
     cursor: pointer;
+}
+
+#list-container {
+    border-bottom: 3px solid #969494;
+    background-color: #fff;
+    padding: 20px 40px;
+}
+
+h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.list-icon {
+    border-radius: 50%;
 }
