@@ -22,6 +22,8 @@ class PostsController extends Controller
                 'posts.id',
                 'posts.user_id',
                 'posts.posts',
+                'posts.created_at',
+                'posts.updated_at',
                 'follows.follow',
                 'follows.follower',
             ])
@@ -29,16 +31,19 @@ class PostsController extends Controller
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->where('follows.follower', Auth::id())
             ->orWhere('posts.user_id', Auth::id())
+            ->orderBy('posts.updated_at', 'desc')
             ->get();
-
             return view('posts.index', compact('posts'));
+
     }
 
     public function create(Request $request){
         $post = $request->input('newPost');
         DB::table('posts')->insert([
             'user_id' => Auth::user()->id,
-            'posts' => $post
+            'posts' => $post,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         return back();
