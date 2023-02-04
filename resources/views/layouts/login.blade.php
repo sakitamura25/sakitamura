@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="https://kit.fontawesome.com/e667fb8788.js" crossorigin="anonymous"></script>
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -23,7 +24,7 @@
     <header>
         <div id = "head">
             <div class="header">
-                <h1><a  href="/top" class="logo"><img src="{{ asset('images/main_logo.png') }}"></a></h1>
+                <p><a  href="/top" class="logo"><img src="{{ asset('images/main_logo.png') }}"></a></p>
                 <div id="right">
                     <div id="accordion">
                         <p class="accordion-username">{{ Auth::user()->username }}さん</p>
