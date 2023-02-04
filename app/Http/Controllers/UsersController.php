@@ -47,6 +47,8 @@ class UsersController extends Controller
                 'posts.id',
                 'posts.user_id',
                 'posts.posts',
+                'posts.created_at',
+                'posts.updated_at',
                 'users.id',
                 'users.username',
                 'users.images',
