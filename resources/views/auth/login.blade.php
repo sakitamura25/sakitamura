@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="login">
-  {!! Form::open(['url' => '/login', 'method' => 'post']) !!}
+  {{ Form::open(['url' => '/login', 'method' => 'post']) }}
 
   <div class="form">
     <h2 class="top-copy">DAWNSNSへようこそ</h2>
@@ -20,7 +20,7 @@
 
   <p class="btn"><a href="/register" class="register-copy">新規ユーザーの方はこちら</a></p>
 
-  {!! Form::close() !!}
+  {{ Form::close() }}
 </div>
 
 @endsection
