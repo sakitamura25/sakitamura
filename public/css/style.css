@@ -362,3 +362,62 @@ h1 {
     color: #fff;
     text-align: center;
 }
+
+#posts-profile-container {
+    margin: 20px 40px;
+    display: flex;
+    justify-content: start;
+}
+
+.posts-profile-icon {
+    display: inline;
+}
+
+.posts-profile-block {
+    display: block;
+    margin-left: 20px;
+}
+
+.posts-profile-form {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    align-items: center;
+}
+
+.posts-profile-text {
+    position: absolute;
+    left: 200px;
+    border: none;
+    border-bottom: 2px solid #6f6d6d;
+    background-color: #dedede;
+    width: 200px;
+    height: 20px;
+    overflow-wrap: normal;
+}
+
+.posts-profile-text-img {
+    position: absolute;
+    left: 200px;
+    border: none;
+    border-bottom: 2px solid #6f6d6d;
+    background-color: #dedede;
+    width: 200px;
+    height: 20px;
+    overflow-wrap: normal;
+    padding: 40px;
+}
+
+.posts-profile-button-block {
+    padding-top: 120px;
+}
+
+.posts-profile-button {
+    padding: 10px 40px;
+    border: none;
+    background-color: #679e60;
+    color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    left: 300px;
+}
