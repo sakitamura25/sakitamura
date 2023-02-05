@@ -16,10 +16,10 @@ class PostsController extends Controller
 
         $posts = DB::table('posts')
             ->select([
-                'users.id',
+                'users.id as uid',
                 'users.username',
                 'users.images',
-                'posts.id',
+                'posts.id as pid',
                 'posts.user_id',
                 'posts.posts',
                 'posts.created_at',
@@ -32,7 +32,9 @@ class PostsController extends Controller
             ->where('follows.follower', Auth::id())
             ->orWhere('posts.user_id', Auth::id())
             ->orderBy('posts.updated_at', 'desc')
-            ->get();
+            ->get()
+            ->unique('pid');
+
             return view('posts.index', compact('posts'));
 
     }
