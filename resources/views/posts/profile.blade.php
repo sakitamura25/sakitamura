@@ -2,35 +2,48 @@
 
 @section('content')
 
-{{ Form::open(['url' => '/profile', 'method' => 'post']) }}
+  {{ Form::open(['url' => '/profile', 'method' => 'post']) }}
+  {{ Form::hidden('id', $user->id) }}
+<div id="posts-profile-container">
+  <p>
+    <img class="posts-profile-icon icon" src="{{ asset('images/' . $user->images) }}" alt="{{ $user->images }}">
+  </p>
+  <div class="posts-profile-block">
+    <div class="posts-profile-form">
+      {{ Form::label('username', 'UserName', ['class' => 'posts-profile-name']) }}
+      {{ Form::input('text', 'upUserName', $user->username, ['class' => 'posts-profile-text', 'required']) }}
+    </div>
 
-{{ Form::hidden('id', $user->id) }}
+    <div class="posts-profile-form">
+      {{ Form::label('mail', 'MailAddress', ['class' => 'posts-profile-name']) }}
+      {{ Form::input('mail', 'upMail', $user->mail, ['class' => 'posts-profile-text', 'required']) }}
+    </div>
 
-<p>
-{{ Form::label('UserName') }}
-{{ Form::input('text', 'upUserName', $user->username, ['required']) }}</p>
+    <div class="posts-profile-form">
+      {{ Form::label('password', 'Password', ['class' => 'posts-profile-name']) }}
+      {{ Form::input('password', '', $user->password, ['class' => 'posts-profile-text', 'readonly']) }}
+    </div>
 
-<p>
-{{ Form::label('MailAddress') }}
-{{ Form::input('mail', 'upMail', $user->mail, ['required']) }}</p>
+    <div class="posts-profile-form">
+      {{ Form::label('newpassword', 'new Password', ['class' => 'posts-profile-name']) }}
+      {{ Form::password('newPassword', ['class' => 'posts-profile-text']) }}
+    </div>
 
-<p>
-{{ Form::label('Password') }}
-{{ Form::input('password', '', $user->password, ['readonly']) }}</p>
+    <div class="posts-profile-form">
+      {{ Form::label('bio', 'Bio', ['class' => 'posts-profile-name']) }}
+      {{ Form::input('text', 'bio', $user->bio, ['class' => 'posts-profile-text']) }}
+    </div>
 
-<p>
-{{ Form::label('new Password') }}
-{{ Form::password('newPassword') }}</p>
-
-<p>
-{{ Form::label('Bio') }}
-{{ Form::input('text', 'bio', $user->bio) }}</p>
-
-<p>
-{{ Form::label('Icon Image') }}
-{{ Form::file('images') }}</p>
-
-<button type="submit">更新</button>
+    <div class="posts-profile-form">
+      {{ Form::label('image', 'Icon Image', ['class' => 'posts-profile-name']) }}
+      {{ Form::file('images', ['class' => 'posts-profile-text-img']) }}
+    </div>
+    <div class="posts-profile-button-block">
+      {{ Form::submit('更新', ['class' => 'posts-profile-button btn']) }}
+    </div>
+  </div>
+</div>
 {{ Form::close() }}
+
 
 @endsection
