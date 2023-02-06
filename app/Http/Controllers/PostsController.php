@@ -76,31 +76,22 @@ class PostsController extends Controller
 
     public function profileUpdate(Request $request){
 
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'username' => 'required|between:4,12',
-            // 'mail' => 'required|email|between:4,12|unique:users',
-            // 'password' => 'required|alpha_num|between:4,12|unique:users',
+            'mail' => 'required|email|between:4,12|unique:users',
+            'password' => 'required|alpha_num|between:4,12|unique:users',
             'bio' => 'max:200',
         ]);
 
-        if ($validator->fails()) {
-
-            return redirect('/profile');
-                // ->withError($validator)
-                // ->withInput();
-
-        } else {
-
         $user = Auth::user();
-        $user->username = $request->input('upUserName');
-        $user->mail = $request->input('upMail');
-        $user->password = bcrypt($request->input('newPassword'));
+        $user->username = $request->input('username');
+        $user->mail = $request->input('mail');
+        $user->password = bcrypt($request->input('password'));
         $user->bio = $request->input('bio');
         // $user->images = $request->file('images')->store('public/images');
         $user->save();
 
-        return view('posts.profile');
-        }
+        return view('posts.profile', compact('user'));
 
     }
 }
