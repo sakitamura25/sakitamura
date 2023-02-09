@@ -11,32 +11,32 @@
   <div class="posts-profile-block">
     <div class="posts-profile-form">
       {{ Form::label('username', 'UserName', ['class' => 'posts-profile-name']) }}
-      {{ Form::input('username', null, $user->username, ['class' => 'posts-profile-text', 'required']) }}
+      {{ Form::input('username', 'username', $user->username, ['class' => 'posts-profile-text']) }}
     </div>
 
     <div class="posts-profile-form">
       {{ Form::label('mail', 'MailAddress', ['class' => 'posts-profile-name']) }}
-      {{ Form::input('mail', null, $user->mail, ['class' => 'posts-profile-text', 'required']) }}
+      {{ Form::input('mail', 'mail', $user->mail, ['class' => 'posts-profile-text']) }}
     </div>
 
     <div class="posts-profile-form">
       {{ Form::label('password', 'Password', ['class' => 'posts-profile-name']) }}
-      {{ Form::input('password', null, $user->password, ['class' => 'posts-profile-text', 'readonly']) }}
+      {{ Form::input('password', 'password', $user->password, ['class' => 'posts-profile-text', 'readonly']) }}
     </div>
 
     <div class="posts-profile-form">
-      {{ Form::label('password', 'new Password', ['class' => 'posts-profile-name']) }}
-      {{ Form::password('password', ['class' => 'posts-profile-text']) }}
+      {{ Form::label('newPassword', 'new Password', ['class' => 'posts-profile-name']) }}
+      {{ Form::password('newPassword', ['class' => 'posts-profile-text']) }}
     </div>
 
     <div class="posts-profile-form">
       {{ Form::label('bio', 'Bio', ['class' => 'posts-profile-name']) }}
-      {{ Form::input('bio', null, $user->bio, ['class' => 'posts-profile-text']) }}
+      {{ Form::input('text','bio', $user->bio, ['class' => 'posts-profile-text']) }}
     </div>
 
     <div class="posts-profile-form">
-      {{ Form::label('images', 'Icon Image', ['class' => 'posts-profile-name']) }}
-      {{ Form::file('images', ['class' => 'posts-profile-text-img']) }}
+      {{ Form::label('image', 'Icon Image', ['class' => 'posts-profile-name']) }}
+      {{ Form::file('image', ['class' => 'posts-profile-text-img']) }}
     </div>
     <div class="posts-profile-button-block">
       {{ Form::submit('更新', ['class' => 'posts-profile-button btn']) }}
@@ -55,4 +55,4 @@
         </div>
     @endif
 
-@endsection
+    @endsection
