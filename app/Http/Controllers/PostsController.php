@@ -78,20 +78,39 @@ class PostsController extends Controller
 
         $request->validate([
             'username' => 'required|between:4,12',
-            'mail' => 'required|email|between:4,12|unique:users',
-            'password' => 'required|alpha_num|between:4,12|unique:users',
+            'mail' => 'required|email|between:4,12',
             'bio' => 'max:200',
         ]);
 
-        $user = Auth::user();
-        $user->username = $request->input('username');
-        $user->mail = $request->input('mail');
-        $user->password = bcrypt($request->input('password'));
-        $user->bio = $request->input('bio');
-        // $user->images = $request->file('images')->store('public/images');
-        $user->save();
+        $id = $request->input('id');
+        $username = $request->input('username');
+        $mail = $request->input('mail');
+        $bio = $request->input('bio');
+        DB::table('users')
+            ->where('id', $id)
+            ->update(['username' => $username, 'mail' => $mail, 'bio' => $bio]);
 
-        return view('posts.profile', compact('user'));
+        $newPassword = bcrypt($request->input('newPassword'));
+        if ($newPassword != null) {
+            $request ->validate([
+                'newPassword' => 'alpha_num|nullable',
+            ]);
+            DB::table('users')
+                ->where('id', $id)
+                ->update(['password' => $newPassword]);
+        }
+
+        $image_name = 'dawn.png';
+        $images = $request->file('image');
+        if ($images != null) {
+            $image_name = $images->getClientOriginalName();
+            $images->storeAs('images', $image_name, 'public');
+            DB::table('users')
+                ->where('id', $id)
+                ->update(['images' => $image_name]);
+        }
+
+        return redirect('/profile');
 
     }
 }
