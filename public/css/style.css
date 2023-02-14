@@ -225,8 +225,10 @@ header {
 
 #modal-container {
     position: fixed;
-    text-align: center;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
     text-align: center;
     background: rgba(0, 0, 0, 50%);
     opacity: 0;
@@ -235,13 +237,40 @@ header {
 }
 
 #modal-container.active {
-    display: block;
     opacity: 1;
     visibility: visible;
 }
 
+.modal-body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    padding: 20px 40px;
+    width: 50%;
+    height: 180px;
+    position: absolute;
+    top: 120px;
+    left: 120px;
+    background-color: #fff;
+}
+
+.modal-text {
+    margin: 0 auto;
+    width: 90%;
+    height: 100px;
+    text-align: left;
+}
+
 .modal-btn {
     cursor: pointer;
+    border: none;
+    position: absolute;
+    right: 60px;
+    bottom: 20px;
 }
 
 #list-container {
