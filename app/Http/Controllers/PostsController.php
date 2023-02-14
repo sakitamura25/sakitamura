@@ -27,7 +27,7 @@ class PostsController extends Controller
                 'follows.follow',
                 'follows.follower',
             ])
-            ->join('follows', 'posts.user_id', '=', 'follows.follow')
+            ->leftjoin('follows', 'posts.user_id', '=', 'follows.follow')
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->where('follows.follower', Auth::id())
             ->orWhere('posts.user_id', Auth::id())
@@ -48,7 +48,7 @@ class PostsController extends Controller
             'updated_at' => now()
         ]);
 
-        return back();
+        return redirect('/top');
     }
 
     public function update(Request $request){
@@ -88,26 +88,30 @@ class PostsController extends Controller
         $bio = $request->input('bio');
         DB::table('users')
             ->where('id', $id)
-            ->update(['username' => $username, 'mail' => $mail, 'bio' => $bio]);
+            ->update(['username' => $username, 'mail' => $mail, 'bio' => $bio, 'updated_at' => now()]);
 
         $newPassword = bcrypt($request->input('newPassword'));
         if ($newPassword != null) {
-            $request ->validate([
-                'newPassword' => 'alpha_num|nullable',
-            ]);
             DB::table('users')
                 ->where('id', $id)
                 ->update(['password' => $newPassword]);
+        } else {
+            DB::table('users')
+                ->where('id', $id)
+                ->value('password');
         }
 
-        $image_name = 'dawn.png';
         $images = $request->file('image');
         if ($images != null) {
             $image_name = $images->getClientOriginalName();
-            $images->storeAs('images', $image_name, 'public');
+            $images->storeAs('public/images', $image_name, 'public');
             DB::table('users')
                 ->where('id', $id)
                 ->update(['images' => $image_name]);
+        } else {
+            DB::table('users')
+                ->where('id', $id)
+                ->value('images');
         }
 
         return redirect('/profile');
