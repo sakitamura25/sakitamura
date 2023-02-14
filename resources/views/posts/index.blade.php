@@ -36,11 +36,13 @@
     <!-- モーダル画面 -->
       <div id="modal-container">
         <div class="modal-body">
+          <div class="modal-content">
           {{ Form::open(['url' => '/post/update', 'method' => 'post']) }}
           {{ Form::hidden('id', $post->pid) }}
-          {{ Form::input('text', 'upPosts', $post->posts, ['required', 'max:200']) }}
+          {{ Form::input('text', 'upPosts', $post->posts, ['required', 'max:200', 'class' => 'modal-text']) }}
           {{ Form::button('<img src="images/edit.png" alt="編集">', ['class' => 'modal-btn', 'type' => 'submit']) }}
           {{ Form::close() }}
+          </div>
         </div>
       </div>
     <td><a href="/post/{{ $post->pid }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash_h.png" alt="削除"></a></td>
