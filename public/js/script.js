@@ -1,6 +1,7 @@
 
 $(function () {
   $('.accordion-username').click(function () {
+    $('.accordion-username').toggleClass('add');
     $('.menu').slideToggle(300);
   });
 });
