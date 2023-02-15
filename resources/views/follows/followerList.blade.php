@@ -20,6 +20,9 @@
         <p class="user-block-username">{{ $follower_post->username }}</p>
         <p class="user-block-time">{{ $follower_post->updated_at }}</p>
       </div>
+      <div class="post-block">
+        <p>{{ $follower_post->posts }}</p>
+      </div>
     </div>
   @endif
 @endforeach
