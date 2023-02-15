@@ -43,12 +43,19 @@ header {
     height: 14px;
     border-top: 2px solid #fff;
     border-right: 2px solid #fff;
-    -webkit-transform: rotate(135deg);
     transform: rotate(135deg);
 }
 
-.accordion-username.open::after {
-    -webkit-transform: rotate(-45deg);
+.accordion-username.add::after {
+    content: "";
+    position: absolute;
+    right: 30px;
+    top: 38%;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
     transform: rotate(-45deg);
 }
 
@@ -57,18 +64,15 @@ header {
     position: absolute;
     top: 102px;
     right: 0;
-    z-index: 1000;
+    width: 20%;
+    line-height: 75px;
+    z-index: 1;
 }
 
 .menu li {
     background-color: #fff;
     border: 1px solid #6C6C6C;
     border-top: none;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 60px;
-    line-height: 60px;
-
 }
 
 .menu li a {
@@ -239,6 +243,7 @@ header {
 #modal-container.active {
     opacity: 1;
     visibility: visible;
+    z-index: 1;
 }
 
 .modal-body {
