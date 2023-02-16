@@ -6,7 +6,7 @@
   {{ Form::hidden('id', $user->id) }}
 <div id="posts-profile-container">
   <p>
-    <img class="posts-profile-icon icon" src="{{ asset('storage/images' . $user->images) }}" alt="{{ $user->images }}">
+    <img class="posts-profile-icon icon" src='storage/images/{{$user->images}}'>
   </p>
   <div class="posts-profile-block">
     <div class="posts-profile-form">

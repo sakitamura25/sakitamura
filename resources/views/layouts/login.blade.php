@@ -28,7 +28,7 @@
                 <div id="right">
                     <div id="accordion">
                         <p class="accordion-username">{{ Auth::user()->username }}さん</p>
-                        <img class="icon" src="{{ asset('images/' . Auth::user()->images) }}" alt="{{ Auth::user()->images }}">
+                        <img class="icon" src="{{ asset('storage/images/'.Auth::user()->images) }}">
                     <div>
                 </div>
             </div>

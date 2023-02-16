@@ -11,7 +11,7 @@
 @foreach($users as $user)
   <div class="search-commit">
     <p>
-      <img class="search-icon icon" src="{{ asset('images/' . $user->images) }}", alt="{{ $user->images }}">
+      <img class="search-icon icon" src="{{ asset('storage/images/' . $user->images) }}", alt="{{ $user->images }}">
     </p>
     <p class="search-name">{{ $user->username }}</p>
       @if($follows->contains($user->id))
