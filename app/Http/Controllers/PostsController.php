@@ -86,33 +86,33 @@ class PostsController extends Controller
         $username = $request->input('username');
         $mail = $request->input('mail');
         $bio = $request->input('bio');
-        DB::table('users')
-            ->where('id', $id)
-            ->update(['username' => $username, 'mail' => $mail, 'bio' => $bio, 'updated_at' => now()]);
 
-        $newPassword = bcrypt($request->input('newPassword'));
-        if ($newPassword != null) {
-            DB::table('users')
-                ->where('id', $id)
-                ->update(['password' => $newPassword]);
+        if (request('newPassword')) {
+            $newPassword = bcrypt($request->input('newPassword'));
         } else {
-            DB::table('users')
-                ->where('id', $id)
+            $newPassword = DB::table('users')
+                ->where('id', Auth::id())
                 ->value('password');
         }
 
-        $images = $request->file('image');
-        if ($images != null) {
+        if (request('image')) {
+            $images = $request->file('image');
             $image_name = $images->getClientOriginalName();
-            $images->storeAs('public/images', $image_name, 'public');
-            DB::table('users')
-                ->where('id', $id)
-                ->update(['images' => $image_name]);
+            $images->storeAs('public/images', $image_name);
         } else {
-            DB::table('users')
-                ->where('id', $id)
+            $image_name = DB::table('users')
+                ->where('id', Auth::id())
                 ->value('images');
         }
+        DB::table('users')
+            ->where('id', Auth::id())
+            ->update([
+                'username' => $username,
+                'mail' => $mail,
+                'password' => $newPassword,
+                'bio' => $bio,
+                'images' =>$image_name
+            ]);
 
         return redirect('/profile');
 
