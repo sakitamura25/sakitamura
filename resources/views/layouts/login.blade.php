@@ -69,7 +69,7 @@
                         @endphp
                         <p class="sb-count">{{ $follower_count }}名</p>
                     </div>
-                    <p class="sb-btn"><a href="follower-list" class="list-button">フォロワーリスト</a></p>
+                    <p class="sb-btn"><a href="/follower-list" class="list-button">フォロワーリスト</a></p>
             </div>
             <p class="sb-btn search"><a href="/search" class="list-button">ユーザー検索</a></p>
         </div>
@@ -77,6 +77,6 @@
     <footer>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="{{ asset('/js/script.js') }}"></script>
 </body>
 </html>
