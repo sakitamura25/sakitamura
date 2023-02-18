@@ -3,7 +3,7 @@
 @section('content')
   <div id="users-profile-container">
     <p>
-      <img class="users-profile-icon icon" src="{{ asset('images/' . $users->images) }}", alt="{{ $users->images }}">
+      <img class="users-profile-icon icon" src="{{ asset('storage/images/' . $users->images) }}">
     </p>
     <div class="users-profile-block1">
       <p class="name">Name</p>
@@ -30,7 +30,7 @@
   <div id="post-container">
     <div class="user-block">
       <p>
-        <img class="user-block-icon icon" src="{{ asset('images/' . $post->images) }}", alt="{{ $post->images }}">
+        <img class="user-block-icon icon" src="{{ asset('storage/images/' . $post->images) }}">
       </p>
       <p class="user-block-username"> {{ $post->username }}</p>
       <p class="user-block-time">{{ $post->updated_at }}</p>
