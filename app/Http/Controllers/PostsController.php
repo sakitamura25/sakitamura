@@ -104,6 +104,7 @@ class PostsController extends Controller
                 ->where('id', Auth::id())
                 ->value('images');
         }
+
         DB::table('users')
             ->where('id', Auth::id())
             ->update([
