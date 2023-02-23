@@ -33,9 +33,9 @@ class UsersController extends Controller
         return view('users.search', compact('keyword', 'users', 'follows'));
     }
 
-    public function profile($user_id){
+    public function profile($id){
         $users = DB::table('users')
-            ->where('id', $user_id)
+            ->where('id', $id)
             ->first();
 
         $follows = DB::table('follows')
@@ -54,7 +54,7 @@ class UsersController extends Controller
                 'users.images',
             ])
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->where('user_id', $user_id)
+            ->where('user_id', $id)
             ->get();
 
         return view('users.profile', compact('users', 'follows', 'posts'));
