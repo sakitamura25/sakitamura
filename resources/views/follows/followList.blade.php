@@ -4,8 +4,8 @@
   <div id="list-container">
     <h1>Follow list</h1>
       <div class="list-container">
-        @foreach($follow_lists as $follow_list)
-          <a href="/users/{{ $follow_list->id }}/profile"><img class="list-icon icon" src="{{ asset('storage/images/' . $follow_list->images) }}"></a>
+        @foreach($follow_posts as $follow_post)
+          <a href="/users/{{ $follow_post->uid }}/profile"><img class="list-icon icon" src="{{ asset('storage/images/' . $follow_post->images) }}"></a>
         @endforeach
       </div>
   </div>
