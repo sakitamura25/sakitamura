@@ -25,7 +25,7 @@ class UsersController extends Controller
             ->pluck('follow');
 
         if (!empty($keyword)) {
-            $query->where('username', 'LIKE', "%{$keyword}%")
+            $users = $query->where('username', 'LIKE', "%{$keyword}%")
                 ->get();
         }
             $users = $query->get();
