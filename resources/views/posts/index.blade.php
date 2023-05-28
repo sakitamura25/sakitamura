@@ -30,9 +30,22 @@
   <div class="post-block">
       <p>{{ $post->posts }}</p>
   </div>
+  <div class="like-block">
+    {{ Form::open(['url' => '/like/register', 'method' => 'post']) }}
+    {{ Form::hidden('pid', $post->pid )}}
+      @if($likes->contains($post->pid))
+        {{ Form::button('<i class="fa-solid fa-heart"></i>', ['class' => 'like-button btn', 'type' => 'submit']) }}
+        {{ Form::close() }}
+      @else
+        {{ Form::button('<i class="fa-regular fa-heart"></i>', ['class' => 'like-button btn', 'type' => 'submit']) }}
+      @endif
+    {{ Form::close() }}
+  </div>
   <div class="btn-block">
     @if(Auth::user()->id == $post->user_id)
-    <a href="" class="modal-open"><img src="images/edit.png" alt="編集"></a>
+    <a href="" class="modal-open">
+      <img src="images/edit.png" alt="編集">
+    </a>
     <!-- モーダル画面 -->
       <div id="modal-container">
         <div class="modal-body">
